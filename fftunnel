@@ -26,13 +26,24 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 FORWARDING_PORT=9999
+FIREFOXMAC='/Applications/Firefox.app/Contents/MacOS/firefox'
+FIREFOXLINUX=$(which firefox)
 
 if [[ -z "${1}" ]]; then
 	echo "Usage: $0 user@hostname <other_options>"
 	exit 1
 fi
 
+if [[ $(uname | grep -i Darwin) ]]; then
+  FIREFOX=$FIREFOXMAC
+else
+  FIREFOX=$FIREFOXLINUX
+fi
+
+echo $FIREFOX
+read wait
+
 ssh -ND $FORWARDING_PORT $@ &
 PID=$!
-firefox -P Secure
+$FIREFOX -P Secure
 kill $PID
