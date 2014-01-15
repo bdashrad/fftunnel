@@ -15,8 +15,13 @@ h3. Setup
 
 h4. Create a Firefox Profile
 * Start the profile manager using your CLI:
+** Linux:
 <pre>
 $ firefox -ProfileManager
+</pre>
+** Mac OS:
+<pre>
+$ /Applications/Firefox.app/Contents/MacOS/firefox -ProfileManager
 </pre>
 * Click Create Profile.
 * Click Next.
